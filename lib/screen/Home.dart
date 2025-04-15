@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -22,10 +25,12 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+// ignore: non_constant_identifier_names
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  // ignore: unused_local_variable
   TextEditingController searchbar = TextEditingController();
 
-  Map<String, dynamic> userData = new Map();
+  Map<String, dynamic> userData = {};
   final SecureStorage _secureStorage = SecureStorage();
 
   late final AnimationController _controller =
@@ -43,93 +48,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     setState(() {});
   }
 
-  // Future<void> retrieveListFromSharedPreferences() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-
-  //   // Retrieve list as a string
-  //   List<String>? retrievedList = prefs.getStringList('myKey');
-
-  //   if (retrievedList != null) {
-  //     //   // print('Retrieved List:');
-  //     retrievedList.forEach((element) {
-  //       //     // print(element);
-  //       Future<List<dynamic>?> fetchData() async {
-  //         final response = await http
-  //             .get(Uri.parse('https://course2.onrender.com/recommend/$element'));
-
-  //         if (response.statusCode == 200) {
-  //           final Map<String, dynamic> decodedData = json.decode(response.body);
-
-  //           if (decodedData.containsKey("courses")) {
-  //             return decodedData["courses"];
-  //           } else {
-  //             throw Exception('Invalid data format - missing "companies" key');
-  //           }
-  //         } else {
-  //           throw Exception('Failed to load data');
-  //         }
-  //       }
-  //     });
-  //     // Use the retrieved list in your application logic
-  //     // For example, assign it to a variable or perform operations on it
-  //     // myListVariable = retrievedList;
-  //     } else {
-  //       print('No data found.');
-  //     }
-  //   }
-
-//   Future<void> retrieveListFromSharedPreferences() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-
-//   // Retrieve list as a string
-//   List<String>? retrievedList = prefs.getStringList('myKey');
-
-//   if (retrievedList != null) {
-//     // List to store fetched data
-//     List<List<dynamic>?> fetchedDataList = [];
-
-//     // Loop through each element in the retrievedList
-//     for (String element in retrievedList) {
-//       try {
-//         final response = await http.get(Uri.parse('https://course2.onrender.com/recommend/$element'));
-
-//         if (response.statusCode == 200) {
-//           final Map<String, dynamic> decodedData = json.decode(response.body);
-
-//           if (decodedData.containsKey("courses")) {
-//             fetchedDataList.add(decodedData["courses"]);
-//           } else {
-//             throw Exception('Invalid data format - missing "courses" key');
-//           }
-//         } else {
-//           throw Exception('Failed to load data');
-//         }
-//       } catch (error) {
-//         print('Error fetching data for $element: $error');
-//         // You might want to handle errors here for individual elements
-//         // or decide on a strategy for continuing despite errors
-//       }
-//     }
-
-//     // Use the fetched data list in your application logic
-//     // For example, process fetchedDataList or assign it to a variable
-//     processFetchedData(fetchedDataList);
-//   } else {
-//     print('No data found.');
-//   }
-// }
-
-  Future<List<List<dynamic>?>?> retrieveDataForElements() async {
+  Future<List<List<dynamic>?>> retrieveDataForElements() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String>? retrievedList = prefs.getStringList('myKey');
-    if (retrievedList != null) {
-      List<List<dynamic>?> fetchedDataList = [];
+    List<List<dynamic>?> fetchedDataList = []; // Specify the type explicitly
 
+    if (retrievedList != null) {
       for (String element in retrievedList) {
         try {
           final response = await http.get(
-              Uri.parse('https://course2.onrender.com/recommend/$element'));
+            Uri.parse('https://course2.onrender.com/recommend/$element'),
+          );
 
           if (response.statusCode == 200) {
             final Map<String, dynamic> decodedData = json.decode(response.body);
@@ -143,16 +73,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             throw Exception('Failed to load data');
           }
         } catch (error) {
-          print('Error fetching data for $element: $error');
+          debugPrint('Error fetching data for $element: $error');
           // Handle errors if needed
         }
       }
-
-      return fetchedDataList;
-    } else {
-      print('No data found.');
-      return null;
     }
+
+    // Return fetchedDataList even if retrievedList is null
+    return fetchedDataList;
   }
 
   // //
@@ -179,51 +107,27 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     // CompanyServices companyServices = CompanyServices();
+    var userData;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
             // scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.only(top: 30),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(
                 children: [
-//                   SharedPreferences prefs = await SharedPreferences.getInstance();
-
-// // Retrieve list as a string
-// List<String>? retrievedList = prefs.getStringList('myKey');
-
-// if (retrievedList != null) {
-//   print('Retrieved List:');
-//   retrievedList.forEach((element) {
-//     print(element);
-//   });
-// } else {
-//   print('No data found.');
-// }
-                  Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.grey),
-                    ),
-                    child: const CircleAvatar(
-                        // child: ,
-                        backgroundImage:
-                            AssetImage('assests/images/profiel.png')),
-                  ),
                   const SizedBox(width: 16.0),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        userData['name'] ?? '',
-                        style: TextStyle(
+                        userData['name'] ?? 'User Name',
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
-                      Text(userData['email'] ?? ''),
+                      Text(userData['email'] ?? 'user@example.com'),
                     ],
                   ),
                   const Spacer(),
@@ -242,7 +146,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               buildtextfiled(context, searchbar, "search", false, () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FilterScreenPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const FilterScreenPage()),
                 );
               }),
               const SizedBox(height: 16.0),
@@ -253,11 +158,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => FilterScreenPage()),
+                            builder: (context) => const FilterScreenPage()),
                       );
                     },
                     child: Row(children: [
-                      Spacer(),
+                      const Spacer(),
                       const Text(
                         'Filter   ',
                         style: TextStyle(
@@ -286,9 +191,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CrustomBox()));
+                              builder: (context) => const CrustomBox()));
                     },
-                    child: Text(
+                    child: const Text(
                       "See All",
                       style: TextStyle(color: Colors.blue),
                     )),
@@ -303,14 +208,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   future: retrieveDataForElements(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     } else {
                       List<List<dynamic>?>? fetchedDataList = snapshot.data;
 
                       if (fetchedDataList == null || fetchedDataList.isEmpty) {
-                        return Center(child: Text('No data available.'));
+                        return const Center(child: Text('No data available.'));
                       }
 
                       return ListView.builder(
@@ -327,7 +232,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             // height: screenHeight * 0.3,
                             width: screenWidth * 0.99,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF946CC3)),
+                              border:
+                                  Border.all(color: const Color(0xFF946CC3)),
                               borderRadius: BorderRadius.circular(14),
                             ),
                             child: Column(
@@ -397,7 +303,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                           borderRadius:
                                               BorderRadius.circular(4.0),
                                         ),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.favorite_outlined,
                                         ),
                                       ),
@@ -405,7 +311,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   ],
                                 ),
                                 const SizedBox(height: 10.0),
-                                Divider(),
+                                const Divider(),
                                 // Text(
                                 //   '   Description: ${companyData?[index]['Description']}',
                                 //   style: const TextStyle(
@@ -426,7 +332,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                             style: const TextStyle(
                                               fontWeight: FontWeight.w700,
                                               fontSize: 12,
-                                              color: Color(0xFF246BFD),
+                                              color: const Color(0xFF246BFD),
                                             ),
                                           ),
                                         ]))),
@@ -499,7 +405,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CustomBox()));
+                                builder: (context) => const CustomBox()));
                       },
                       child: Text(
                         "See All",
@@ -540,8 +446,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 height: screenHeight * 0.85, // Adjust the height as needed
                 // child: SingleChildScrollView(
                 child: FutureBuilder<List<dynamic>?>(
-
-                  
                   future: fetchDataa(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -722,7 +626,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget buildtextfiled(BuildContext context, TextEditingController controller,
       String hinttext, bool obscure, VoidCallback onChanged) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: [],
       ),
       margin: const EdgeInsets.all(15),
@@ -734,8 +638,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         obscureText: obscure,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.keyboard_option_key_sharp),
+            prefixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.keyboard_option_key_sharp),
             fillColor: const Color.fromRGBO(148, 108, 195, 0.1),
             filled: true,
             hintText: hinttext,
@@ -750,4 +654,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
+
+  // retrieveDataForElements() {}
+
+  // TextEditingController searchbar = TextEditingController();
 }

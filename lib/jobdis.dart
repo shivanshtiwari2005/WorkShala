@@ -18,9 +18,9 @@ class _jobDisPageState extends State<jobDisPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return DefaultTabController(
+    return const DefaultTabController(
         length: 2,
-        child: const Scaffold(
+        child: Scaffold(
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
           body: jobDisDetail(),
         ));

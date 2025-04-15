@@ -37,7 +37,7 @@ class _NewPasswordState extends State<NewPassword> {
         // Navigate to the next screen or perform other actions
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Register()),
+          MaterialPageRoute(builder: (context) => const Register()),
         );
       } else {
         // Password reset failed
@@ -57,7 +57,7 @@ class _NewPasswordState extends State<NewPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "New Password",
           style: TextStyle(color: Colors.purple),
         ),

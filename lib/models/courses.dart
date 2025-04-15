@@ -9,16 +9,16 @@ class course {
     if (json['courses'] != null) {
       courses = <Courses>[];
       json['courses'].forEach((v) {
-        courses!.add(new Courses.fromJson(v));
+        courses!.add(Courses.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    if (this.courses != null) {
-      data['courses'] = this.courses!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    if (courses != null) {
+      data['courses'] = courses!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -40,12 +40,11 @@ class Courses {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['courses'] = this.courses;
-    data['Description'] = this.description;
-    data['Level'] = this.level;
-    data['Skills Covered'] = this.skillsCovered;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['courses'] = courses;
+    data['Description'] = description;
+    data['Level'] = level;
+    data['Skills Covered'] = skillsCovered;
     return data;
   }
 }
-

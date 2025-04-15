@@ -7,6 +7,8 @@ import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/screen/Home.dart';
 
 class CrustomBox extends StatefulWidget {
+  const CrustomBox({super.key});
+
   // const CustomBox({super.key});
   @override
   State<CrustomBox> createState() => _CrustomBoxState();
@@ -17,10 +19,10 @@ class _CrustomBoxState extends State<CrustomBox> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -60,7 +62,7 @@ class CrustomDetail extends StatelessWidget {
         future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -140,7 +142,7 @@ class CrustomDetail extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8.0),
-                        Divider(),
+                        const Divider(),
                         Text(
                           'Description: ${courses[index]['Description']}',
                           style: const TextStyle(
@@ -157,7 +159,7 @@ class CrustomDetail extends StatelessWidget {
                             color: Color(0xFF246BFD),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Row(
@@ -178,7 +180,7 @@ class CrustomDetail extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 170,
                             ),
                             Container(
@@ -188,10 +190,10 @@ class CrustomDetail extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => jobDisPage()),
+                                      builder: (context) => const jobDisPage()),
                                 );
                               },
-                              child: Text(
+                              child: const Text(
                                 'View Details',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

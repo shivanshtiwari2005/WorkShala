@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/uploading.dart';
 import 'package:intershipapp/utilities.dart';
 // import 'package:workshala/loadingpage.dart';

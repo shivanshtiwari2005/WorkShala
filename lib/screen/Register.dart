@@ -29,8 +29,8 @@ class _RegisterState extends State<Register> {
   // final SecureStorage _secureStorage = SecureStorage();
 
   bool? isChecked = false;
-  final emailController = new TextEditingController();
-  final passwordController = new TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   late SharedPreferences prefs;
   final SecureStorage _secureStorage = SecureStorage();
@@ -95,10 +95,10 @@ class _RegisterState extends State<Register> {
                   orElse: () => '');
         }
         if (accessToken.isNotEmpty) {
-  accessToken = accessToken.replaceFirst('accessToken=', '');
-}
+          accessToken = accessToken.replaceFirst('accessToken=', '');
+        }
 
-print('Extracted accessToken: $accessToken');
+        print('Extracted accessToken: $accessToken');
 
         print('Access Token from Cookie: $accessToken');
 
@@ -133,8 +133,8 @@ print('Extracted accessToken: $accessToken');
 
         // Now navigate to the next screen
         // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => categories()));
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MainScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const MainScreen()));
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(message),
@@ -343,8 +343,10 @@ print('Extracted accessToken: $accessToken');
           children: [
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Forgetpass()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Forgetpass()));
                 },
                 child: const CustomText(
                   text: "Forget Password ?",

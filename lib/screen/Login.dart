@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   TextEditingController firstname = TextEditingController();
   TextEditingController mobilee = TextEditingController();
   TextEditingController Lastname = TextEditingController();
+  TextEditingController otp = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final SecureStorage _secureStorage = SecureStorage();
 
@@ -39,6 +40,7 @@ class _LoginState extends State<Login> {
       children: [
         // Padding(padding: EdgeInsets.only(top: 100)),
         Image.asset("assests/images/Group.png"),
+        Image.asset("assests/images/Group 2.png"),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -143,8 +145,10 @@ class _LoginState extends State<Login> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Register()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Register()));
                     },
                     child: const CustomText(
                       text: "Log in",

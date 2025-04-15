@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorage {
@@ -27,21 +26,22 @@ class SecureStorage {
     String? jsonString = await storage.read(key: _keyUserData);
 
     // If the JSON string is not null, deserialize it to a Map<String, dynamic>
-    if (jsonString != null) {
-      try {
-        // Use jsonDecode to convert the JSON string to a Map
+    try {
+      // Use jsonDecode to convert the JSON string to a Map
+      if (jsonString != null) {
         Map<String, dynamic> userData = jsonDecode(jsonString);
         return userData;
-      } catch (e) {
-        // Handle any potential errors during deserialization
-        print("Error decoding JSON: $e");
-        return null;
       }
+    } catch (e) {
+      // Handle any potential errors during deserialization
+      print("Error decoding JSON: $e");
+      return null;
     }
 
     // Return null if the JSON string was null
     return null;
   }
+
   Future<void> saveUserData(Map<String, dynamic> userData) async {
     // Implementation to save userData securely
     // For example, you might use a package like flutter_secure_storage

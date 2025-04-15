@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:intershipapp/jobdis.dart';
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> fetchProfileData() async {
     try {
       String? accessToken = await _secureStorage.getToken();
-      print("accessToken ${accessToken}");
+      print("accessToken $accessToken");
       http.Response response = await http.get(
         Uri.parse('https://workshala-7v7q.onrender.com/profile'),
         headers: {
@@ -46,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
       if (response.statusCode == 200) {
         // Parse and handle the profile data here
         Map<String, dynamic> profileData = jsonDecode(response.body);
-        print("response ${profileData}");
+        print("response $profileData");
         await _secureStorage.setUserData(profileData);
 
         // Use profileData as needed
@@ -78,8 +79,8 @@ class _MainScreenState extends State<MainScreen> {
         },
         children: <Widget>[
           Home(),
-          jobDisPage(),
-          ProfilePage(),
+          const jobDisPage(),
+          const ProfilePage(),
           // SettingsPage()
           // jobDisDetail(),
           // uploadScreen()

@@ -26,8 +26,8 @@ class _ForgetpassState extends State<Forgetpass> {
         // Password reset request successful
         // You can handle the response accordingly
         // print(email);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => OtpVerify()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const OtpVerify()));
         print('Password reset email sent successfully');
       } else {
         // Password reset request failed
@@ -48,7 +48,7 @@ class _ForgetpassState extends State<Forgetpass> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Forget Password",
           style: TextStyle(color: Colors.purple),
         ),
@@ -58,13 +58,13 @@ class _ForgetpassState extends State<Forgetpass> {
         children: [
           // Padding(padding: EdgeInsets.only(left: 90)),
           Container(
-            padding: EdgeInsets.all(15),
-            child: Text(
+            padding: const EdgeInsets.all(15),
+            child: const Text(
                 "Please enter your e-mail address. you will receive an e-mail along with a link which can be used to reset your password"),
           ),
           buildtextfiled(context, emailcontrller, "Enter Email", false),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             child: ElevatedButton(
               onPressed: () {
                 // resetPassword(Forgetpasss.text);

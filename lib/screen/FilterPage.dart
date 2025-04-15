@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FilterPage extends StatefulWidget {
+  const FilterPage({super.key});
+
   @override
   _FilterPageState createState() => _FilterPageState();
 }
@@ -78,7 +80,6 @@ class _FilterPageState extends State<FilterPage> {
           ],
         ),
       ),
-
     );
   }
 

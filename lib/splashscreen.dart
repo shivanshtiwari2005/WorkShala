@@ -22,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Scaffold(
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 7),
+              const SizedBox(height: 7),
               RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   children: [
                     TextSpan(
                       text: "WORK",
@@ -58,11 +58,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => WelcomeScreen(),
+            builder: (context) => const WelcomeScreen(),
           ));
     });
   }

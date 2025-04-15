@@ -96,7 +96,7 @@ class uploadingScreen extends StatelessWidget {
             SizedBox(
               height: screenHeight * 0.042,
             ),
-            Text(
+            const Text(
               'Uploading...',
               style: TextStyle(
                 color: Color(0xFF0093FF),

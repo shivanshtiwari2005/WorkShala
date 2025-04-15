@@ -160,7 +160,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           items: [
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "HOME",
               backgroundColor: Color.fromRGBO(148, 108, 195, 1),
@@ -168,7 +168,8 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
             BottomNavigationBarItem(
               icon: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(148, 108, 195, 1), // Background color
+                  backgroundColor: const Color.fromRGBO(
+                      148, 108, 195, 1), // Background color
                 ),
                 onPressed: () {
                   selectedOptions.forEach((key, value) {
@@ -182,7 +183,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
                 ),
               ),
               label: "",
-              backgroundColor: Color.fromRGBO(148, 108, 195, 1),
+              backgroundColor: const Color.fromRGBO(148, 108, 195, 1),
             ),
           ],
           // currentIndex: 0,

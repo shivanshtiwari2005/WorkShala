@@ -17,7 +17,8 @@ class CourseBox extends StatefulWidget {
   final bool isOnline;
   // final VoidCallback onFavIconPressed;
 
-  CourseBox({
+  const CourseBox({
+    super.key,
     required this.companyLogo,
     required this.companyName,
     required this.personName,
@@ -36,8 +37,8 @@ class _CourseBoxState extends State<CourseBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(9),
+      padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(9),
       height: 230,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
@@ -64,16 +65,16 @@ class _CourseBoxState extends State<CourseBox> {
                       // Add your image loading placeholders or error widgets here
                     ),
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Container(
                     child: Column(children: [
                       Text(
                         widget.companyName,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
                         widget.personName,
-                        style: TextStyle(fontWeight: null),
+                        style: const TextStyle(fontWeight: null),
                       ),
                     ]),
                   ),
@@ -89,7 +90,7 @@ class _CourseBoxState extends State<CourseBox> {
                       });
                     },
                     child: Container(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(8.0),
@@ -101,7 +102,7 @@ class _CourseBoxState extends State<CourseBox> {
                   ),
                 ],
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Container(
                 width: 20,
                 height: 20,
@@ -112,32 +113,32 @@ class _CourseBoxState extends State<CourseBox> {
               ),
             ],
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           // Text(
           //   'Person: $personName',
           // ),
-          Divider(),
+          const Divider(),
           Text(
             widget.placeName,
-            style:
-                TextStyle(fontWeight: null, fontSize: 20, color: Colors.grey),
+            style: const TextStyle(
+                fontWeight: null, fontSize: 20, color: Colors.grey),
           ),
           Text(
             widget.moneyName,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 20, color: Colors.blue),
           ),
 
           Row(
             children: [
               Container(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(148, 108, 195, 1),
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Text(
+                child: const Text(
                   'ONLINE',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -151,6 +152,8 @@ class _CourseBoxState extends State<CourseBox> {
 }
 
 class CustomBox extends StatefulWidget {
+  const CustomBox({super.key});
+
   // const CustomBox({super.key});
   @override
   State<CustomBox> createState() => _CustomBoxState();
@@ -161,10 +164,10 @@ class _CustomBoxState extends State<CustomBox> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -204,7 +207,7 @@ class CustomDetail extends StatelessWidget {
         future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -304,7 +307,7 @@ class CustomDetail extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8.0),
-                        Divider(),
+                        const Divider(),
                         Text(
                           'Location: ${companyData[index]['location']}',
                           style: const TextStyle(
@@ -321,7 +324,7 @@ class CustomDetail extends StatelessWidget {
                             color: Color(0xFF246BFD),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Row(
@@ -355,7 +358,7 @@ class CustomDetail extends StatelessWidget {
                                       builder: (context) => const jobDisPage()),
                                 );
                               },
-                              child: Text(
+                              child: const Text(
                                 'View Details',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

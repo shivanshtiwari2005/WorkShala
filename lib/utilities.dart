@@ -75,7 +75,7 @@ Widget applyButtonBox(String text, double width, double height,
 Widget returnButton1(image, color, height, width, context, page) {
   return GestureDetector(
       onTap: () {
-        showBottomSheet<void>(
+        showBottomSheet(
           context: context,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
@@ -576,7 +576,7 @@ Widget jobDisBoxUi(
             image,
             scale: 0.9,
           ),
-          SizedBox(height: 7),
+          const SizedBox(height: 7),
           Text(
             text1,
             style: TextStyle(
@@ -595,7 +595,7 @@ Widget jobDisBoxUi(
               color: const Color(0xFF0A66C2),
             ),
           ),
-          Divider(),
+          const Divider(),
           SizedBox(
             height: 4 * screenSize.height * 0.0018,
           ),
@@ -695,6 +695,8 @@ Widget jobDisBoxUi(
 }
 
 class AnimatedLoadingDots extends StatefulWidget {
+  const AnimatedLoadingDots({super.key});
+
   @override
   _AnimatedLoadingDotsState createState() => _AnimatedLoadingDotsState();
 }
@@ -709,7 +711,7 @@ class _AnimatedLoadingDotsState extends State<AnimatedLoadingDots>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
 
     _animation = TweenSequence<Color?>(
@@ -740,7 +742,7 @@ class _AnimatedLoadingDotsState extends State<AnimatedLoadingDots>
       children: [
         for (int i = 0; i < 5; i++)
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: AnimatedBuilder(
               animation: _animation,
               builder: (context, child) {
@@ -761,23 +763,25 @@ class _AnimatedLoadingDotsState extends State<AnimatedLoadingDots>
 }
 
 class TextColorChangeWithLine extends StatefulWidget {
+  const TextColorChangeWithLine({super.key});
+
   @override
   _TextColorChangeWithLineState createState() =>
       _TextColorChangeWithLineState();
 }
 
 class _TextColorChangeWithLineState extends State<TextColorChangeWithLine> {
-  Color jobDescColor = Color(0xFF0A66C2);
+  Color jobDescColor = const Color(0xFF0A66C2);
   Color minQualColor = Colors.black;
 
   void _changeColors(bool isJobDescTapped) {
     setState(() {
       if (isJobDescTapped) {
-        jobDescColor = Color(0xFF0A66C2);
+        jobDescColor = const Color(0xFF0A66C2);
         minQualColor = Colors.black;
       } else {
         jobDescColor = Colors.black;
-        minQualColor = Color(0xFF0A66C2);
+        minQualColor = const Color(0xFF0A66C2);
       }
     });
   }
@@ -822,10 +826,10 @@ class _TextColorChangeWithLineState extends State<TextColorChangeWithLine> {
         Container(
           height: 1,
           width: 330,
-          color: jobDescColor == Color(0xFF0A66C2)
-              ? Color(0xFF0A66C2)
-              : Color(0xFFD9D9D9),
-          margin: EdgeInsets.symmetric(vertical: 5),
+          color: jobDescColor == const Color(0xFF0A66C2)
+              ? const Color(0xFF0A66C2)
+              : const Color(0xFFD9D9D9),
+          margin: const EdgeInsets.symmetric(vertical: 5),
         ),
       ],
     );

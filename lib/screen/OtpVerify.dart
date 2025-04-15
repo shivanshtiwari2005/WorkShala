@@ -32,7 +32,7 @@ class _OtpVerifyState extends State<OtpVerify> {
         final Map<String, dynamic> data = jsonDecode(response.body);
         // OTP verification successful, handle accordingly
         print('OTP verification successful');
-        print('Otp token code: ${data}');
+        print('Otp token code: $data');
         print('***Token*** ${data['resetPasswordToken']}');
         Navigator.push(
             context,
@@ -55,7 +55,7 @@ class _OtpVerifyState extends State<OtpVerify> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "OTP Verification",
           style: TextStyle(color: Colors.purple),
         ),
@@ -69,7 +69,7 @@ class _OtpVerifyState extends State<OtpVerify> {
               // Call the verifyOtp function with the entered email and OTP
               await verifyOtp(emailotp.text, otp.text);
             },
-            child: Text('Verify OTP'),
+            child: const Text('Verify OTP'),
           ),
         ],
       ),

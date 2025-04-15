@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

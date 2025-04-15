@@ -12,7 +12,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Map<String, dynamic> userData = new Map();
+  Map<String, dynamic> userData = {};
   final SecureStorage _secureStorage = SecureStorage();
 
   @override

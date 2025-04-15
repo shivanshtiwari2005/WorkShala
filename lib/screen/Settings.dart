@@ -17,15 +17,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
-            // children: [
-            //   CircleAvatar(
-            //       // Add your user's profile image here
-            //       backgroundImage: AssetImage('assests/images/profiel.png')),
-            //   SizedBox(width: 16),
-            //   Text("User Name"), // Replace with the user's name
-            // ],
-            ),
+        title: const Row(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -42,7 +34,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               // const SizedBox(height: 16),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.settings,
                   color: Color.fromRGBO(148, 108, 195, 1),
                 ),
@@ -66,8 +58,10 @@ class _SettingsPageState extends State<SettingsPage> {
               ListTile(
                 title: const Text("Change Password"),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Forgetpass()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Forgetpass()));
                   // Handle Change Password action
                 },
               ),

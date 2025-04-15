@@ -1,22 +1,24 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intershipapp/loadingpage.dart';
 import 'package:intershipapp/screen/NewPassword.dart';
 
-class emailverify extends StatefulWidget {
-  const emailverify({Key? key}) : super(key: key);
+class EmailVerify extends StatefulWidget {
+  const EmailVerify({Key? key}) : super(key: key);
 
   @override
-  State<emailverify> createState() => _emailverifyState();
+  State<EmailVerify> createState() => _EmailVerifyState();
 }
 
-class _emailverifyState extends State<emailverify> {
+class _EmailVerifyState extends State<EmailVerify> {
   TextEditingController emailotp = TextEditingController();
   TextEditingController otp = TextEditingController();
 
   Future<void> verifyOtp(
     String email,
+    // otp is stored in the eneteredOtp variable
     String enteredOtp,
   ) async {
     try {
@@ -28,6 +30,7 @@ class _emailverifyState extends State<emailverify> {
       if (response.statusCode == 404 && response.body.contains('otp expired')) {
         // OTP expired, inform the user and possibly trigger a new OTP generation
         print('OTP has expired. Please request a new OTP.');
+
         // You can implement a mechanism to request a new OTP here
       } else if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body);
@@ -35,11 +38,8 @@ class _emailverifyState extends State<emailverify> {
         print('OTP verification successful');
         // print('Otp token code: ${data}');
         // print('***Token*** ${data['resetPasswordToken']}');
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    loadingPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const loadingPage()));
       } else {
         // Handle other cases or display an error message to the user
         print('OTP verification failed. Status code: ${response.statusCode}');
@@ -56,7 +56,7 @@ class _emailverifyState extends State<emailverify> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "OTP Verification",
           style: TextStyle(color: Colors.purple),
         ),
@@ -70,7 +70,7 @@ class _emailverifyState extends State<emailverify> {
               // Call the verifyOtp function with the entered email and OTP
               await verifyOtp(emailotp.text, otp.text);
             },
-            child: Text('Verify OTP'),
+            child: const Text('Verify OTP'),
           ),
         ],
       ),

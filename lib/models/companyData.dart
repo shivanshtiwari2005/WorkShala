@@ -7,15 +7,15 @@ class companyData {
     if (json['companies'] != null) {
       companies = <Companies>[];
       json['companies'].forEach((v) {
-        companies!.add(new Companies.fromJson(v));
+        companies!.add(Companies.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.companies != null) {
-      data['companies'] = this.companies!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (companies != null) {
+      data['companies'] = companies!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -50,14 +50,14 @@ class Companies {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['img'] = this.img;
-    data['title'] = this.title;
-    data['location'] = this.location;
-    data['industry'] = this.industry;
-    data['companyType'] = this.companyType;
-    data['about'] = this.about;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['img'] = img;
+    data['title'] = title;
+    data['location'] = location;
+    data['industry'] = industry;
+    data['companyType'] = companyType;
+    data['about'] = about;
     return data;
   }
 }

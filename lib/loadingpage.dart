@@ -41,7 +41,7 @@ class bottomDrawer extends StatelessWidget {
 
   Future<void> makeApiRequest(List<String> selectedSkills) async {
     String? accessToken = await _secureStorage.getToken();
-    final apiUrl = 'https://workshala-7v7q.onrender.com/welcome';
+    const apiUrl = 'https://workshala-7v7q.onrender.com/welcome';
     final apiToken = 'Bearer $accessToken';
 
     final requestBody = jsonEncode({
@@ -222,8 +222,8 @@ class bottomDrawer extends StatelessWidget {
                                       text: 'java script'),
                                 ],
                               ))),
-                       SizedBox(
-                        height: screenHeight*0.0285 ,
+                      SizedBox(
+                        height: screenHeight * 0.0285,
                       ),
                       Container(
                           child: const Padding(
@@ -257,9 +257,9 @@ class bottomDrawer extends StatelessWidget {
               height: 7,
             ),
           ])),
-       SizedBox(
-                        height: screenHeight*0.0285 ,
-                      ),
+      SizedBox(
+        height: screenHeight * 0.0285,
+      ),
       Container(
           child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -269,9 +269,14 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 13,
                   ),
+                  nextButtonBox('Skip', 141.0, 45.0, context,
+                      const MainScreen(), () => {}),
                   nextButtonBox(
-                      'Skip', 141.0, 45.0, context, MainScreen(), () => {}),
-                  nextButtonBox('Next', 141.0, 45.0, context, MainScreen(),
+                      'Next',
+                      141.0,
+                      45.0,
+                      context,
+                      const MainScreen(),
                       makeApiRequest(['IT', 'Marketing', 'Finance'])),
                 ],
               )))
